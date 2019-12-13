@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 from telethon import TelegramClient
 
 print('''
@@ -17,11 +16,11 @@ api_hash = input('API HASH: ')
 
 client = TelegramClient("anon", api_id, api_hash)
 
-f = open("groups_id.txt", "w+")
-async def main():
+with open("groups_id.txt", "w+") as f:
+    async def main():
 
-    async for dialog in client.iter_dialogs():
-        f.write(dialog.name + ' has ID ' + str(dialog.id) + "\n")
+        async for dialog in client.iter_dialogs():
+            f.write(dialog.name + ' has ID ' + str(dialog.id) + "\n")
 
 with client:
     client.loop.run_until_complete(main())
