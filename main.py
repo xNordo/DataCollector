@@ -19,8 +19,11 @@ if __name__ == '__main__':
         channels_list = data_store['channels_list']
 
     # connection setup
-    bot = TelegramClient('bot', api_id, api_hash).start(bot_token=bot_token)
-    client = TelegramClient("anon", api_id, api_hash)
+    try:
+        bot = TelegramClient('bot', api_id, api_hash).start(bot_token=bot_token)
+        client = TelegramClient("anon", api_id, api_hash)
+    except:
+        print("Something went wrong with connection, please check if api id, api hash and bot token is correct")
 
     print("___________________________________________________")
 
