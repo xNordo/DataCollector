@@ -16,9 +16,8 @@ api_hash = input('API HASH: ')
 
 client = TelegramClient("anon", api_id, api_hash)
 
-with open("groups_id.txt", "w+") as f:
-    async def main():
-
+async def main():
+    with open("groups_id.txt", "w+") as f:
         async for dialog in client.iter_dialogs():
             f.write(dialog.name + ' has ID ' + str(dialog.id) + "\n")
 

@@ -1,5 +1,5 @@
 import json
-
+import data
 
 def first_setup():
     with open('setup_data.json', 'a+') as f:
