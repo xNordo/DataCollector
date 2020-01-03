@@ -1,6 +1,7 @@
 from telethon import TelegramClient, events
 from setup import first_setup
 import json
+import data
 
 # TODO picture handler
 
@@ -8,15 +9,26 @@ if __name__ == '__main__':
     # initializes first setup if detects no data in setup_data.json
     first_setup()
 
-    # gets all needed data
-    with open('setup_data.json', 'r') as f:
-        data_store = json.load(f)
-        print(data_store)
-        api_id = data_store['api_id']
-        api_hash = data_store['api_hash']
-        bot_token = data_store['bot_token']
-        target_id = data_store['target_id']
-        channels_list = data_store['channels_list']
+    # gets all needed data from setup_data.json
+    api_id = data.ApiID()
+    api_id.get_data_from_json()
+    api_id = api_id.value
+
+    api_hash = data.ApiHASH()
+    api_hash.get_data_from_json()
+    api_hash = api_hash.value
+
+    bot_token = data.BotToken()
+    bot_token.get_data_from_json()
+    bot_token = bot_token.value
+
+    target_id = data.TargetID()
+    target_id.get_data_from_json()
+    target_id = target_id.value
+
+    channels_list = data.ChannelsList()
+    channels_list.get_data_from_json()
+    channels_list = channels_list.value
 
     # connection setup
     try:
